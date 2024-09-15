@@ -1,8 +1,18 @@
 <div class="row">
-    <div class="col8">
+    @if(!isNewView){
+    <div class="col-12">
         <div class="card">
             <div class="card-header bg-success">
-                Employee List
+                <div class="row">
+                    <div class="col-6">
+                        Employee List
+                    </div>
+                    <div class="col-6 text-end">
+                        <button class="btn btn-warning" (click)="isNewView = !isNewView">Add New</button>
+
+                    </div>
+                </div>
+
             </div>
             <div class="card-body">
                 <table class="table table-bordered">
@@ -18,28 +28,126 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td></td>
-                        </tr>
+                        @for(item of empList;track $index){
+                            <tr>
+                                <td>{{$index + 1}}</td>
+                                <td>{{item.employeeName}}</td>
+                                <td>{{item.deptName}}</td>
+                                <td>{{item.contactNo}}</td>
+                                <td>{{item.emailId}}</td>
+                                <td>{{item.role}}</td>
+                                <td>
+                                    <button class="btn btn-primary" (click)="onEdit(item)">Edit</button>
+                                    <button class="btn btn-danger mx-2" (click)="deleteEmployee(item.employeeId)">Delete</button>
+                                </td>
+                            </tr>
+                        }
+                       
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-
-
-    <div class="col-4">
+    }
+    @else{
+    <div class="col-12">
         <div class="card">
             <div class="card-header bg-success">
-                New Employee
+                <div class="row">
+                    <div class="col-6">
+                        Add New
+                    </div>
+                    <div class="col-6 text-end">
+                        <button class="btn btn-warning" (click)="isNewView = !isNewView">Go To List</button>
+
+                    </div>
+                </div>
             </div>
             <div class="card-body">
                 <div class="row">
+                    <div class="col-12">
+                        <label for="">Employee Name</label>
+                        <input type="text" [(ngModel)]="newEmployeeObj.employeeName" name="employeeName"
+                            class="form-control">
+                    </div>
 
+                    <div class="col-6">
+                        <label for="">Contact No</label>
+                        <input type="text" [(ngModel)]="newEmployeeObj.contactNo" name="contactNo" class="form-control">
+                    </div>
+
+                    <div class="col-6">
+                        <label for="">Email Id</label>
+                        <input type="text" [(ngModel)]="newEmployeeObj.emailId" name="emailId" class="form-control">
+                    </div>
+
+
+                    <div class="col-6">
+                        <label for="">Email Id</label>
+                        <input type="text" [(ngModel)]="newEmployeeObj.emailId" name="emailId" class="form-control">
+                    </div>
+
+
+                    <div class="col-6">
+                        <label for="">Department</label>
+                        <select class="form-select" [(ngModel)]="newEmployeeObj.deptId">
+                            <option value="">Select Department</option>
+                            @for(item of departList; track $index){
+                            <option [value]="item.deptId">{{item.deptName}}</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="col-6">
+                        <label for="">Role</label>
+                        <select class="form-select" [(ngModel)]="newEmployeeObj.role">
+                            <option value="">Rolet</option>
+                            @for(item of roleList; track $index){
+                            <option>{{item}}</option>
+                            }
+                        </select>
+                    </div>
+
+
+
+                    <div class="col-6">
+                        <label for="">Gender</label>
+                        <input type="radio" value="Male" [(ngModel)]="newEmployeeObj.gender" name="gender">Male
+                        <input type="radio" value="FeMale" [(ngModel)]="newEmployeeObj.gender" name="gender">Female
+                    </div>
+
+
+                    <div class="col-6">
+                        <label for="">password</label>
+                        <input type="text" [(ngModel)]="newEmployeeObj.password" name="password" class="form-control">
+
+                    </div>
+
+
+                </div>
+
+                <div class="row pt-3">
+<div class="col-6 text-center">
+    <button class="btn btn-secondary">Reset</button>
+</div>
+
+<div class="col-6 text-center">
+    @if(this.newEmployeeObj.employeeId===0){
+        <button class="btn btn-success" (click)="saveEmp()">Save</button>
+    }
+    @else{
+        <button class="btn btn-warning" (click)="updateEmployee()" >udapte</button>
+    }
+  
+</div>
                 </div>
             </div>
         </div>
 
     </div>
+    }
+
+
+
 
 </div>
