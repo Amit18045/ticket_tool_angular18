@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="javascript:void(0)">Logo</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mynavbar">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item" >
+            <a class="nav-link active" routerLink="dashboard" href="javascript:void(0)">dashboard</a>
+          </li>
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="department" href="javascript:void(0)">Department</a>
+          </li>
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="parent-category" href="javascript:void(0)">parent-category</a>
+          </li>
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="child-category" href="javascript:void(0)">child-category</a>
+          </li>
+          
+        </ul>
+        <form class="d-flex">
+          <button class="btn btn-primary" type="button" (click)="logOFF()">logOff</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <router-outlet></router-outlet>
