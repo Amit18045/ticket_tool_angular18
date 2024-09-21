@@ -86,4 +86,11 @@ return this.http.put(`${this.apiUrl}UpdateEmployee`,obj);
 deleteEmployee(id: number){
   return this.http.delete(`${this.apiUrl}DeleteEmployee?id=${id}`);
 }
+
+
+createTicket(obj: any){
+  debugger
+  return this.http.post(`${this.apiUrl}CreateNewTicket`, obj)
+}
+
 }
