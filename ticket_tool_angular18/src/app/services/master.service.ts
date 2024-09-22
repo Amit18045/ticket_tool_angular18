@@ -16,81 +16,96 @@ export class MasterService {
 
 
 
-getAllRoles(){
-  return this.http.get(`${this.apiUrl}GetAllRoles`);
-}
+  getAllRoles() {
+    return this.http.get(`${this.apiUrl}GetAllRoles`);
+  }
 
-  getAllDepartment(){
+  getAllDepartment() {
     debugger;
     //return this.http.get(this.apiUrl + "GetDepartments");
-   return this.http.get(`${this.apiUrl}GetDepartments`);
-  }
-  
-  createNewDepartment(obj : any){
-    return this.http.post(`${this.apiUrl}CreateDepartment`,obj);
+    return this.http.get(`${this.apiUrl}GetDepartments`);
   }
 
-  updateDepartment(obj: any){
-    return this.http.put(`${this.apiUrl}UpdateDepartment`,obj);
+  createNewDepartment(obj: any) {
+    return this.http.post(`${this.apiUrl}CreateDepartment`, obj);
   }
 
-  deleteDepartment(id: number){
+  updateDepartment(obj: any) {
+    return this.http.put(`${this.apiUrl}UpdateDepartment`, obj);
+  }
+
+  deleteDepartment(id: number) {
     return this.http.delete(`${this.apiUrl}DeleteDepartment?id=${id}`);
   }
 
-  getAllParentCategory(){
+  getAllParentCategory() {
     return this.http.get(`${this.apiUrl}GetParentCategory`);
   }
-  
-  createParentCategory(obj: any){
-   return this.http.post(`${this.apiUrl}CreateParentCategory`,obj);
+
+  createParentCategory(obj: any) {
+    return this.http.post(`${this.apiUrl}CreateParentCategory`, obj);
   }
 
-  updateParentCategory(obj: any){
-    return this.http.put(`${this.apiUrl}UpdateParentCategory`,obj);
+  updateParentCategory(obj: any) {
+    return this.http.put(`${this.apiUrl}UpdateParentCategory`, obj);
   }
 
-  deleteParentCategory(id : number){
+  deleteParentCategory(id: number) {
     return this.http.delete(`${this.apiUrl}DeleteParentCategory?id=${id}`);
   }
 
-  getAllChildCategory(){
+  getAllChildCategory() {
     return this.http.get(`${this.apiUrl}GetChildCategory`);
   }
 
-  createChildCategory(obj: any){
-return this.http.post(`${this.apiUrl}CreateChildCategory`,obj);
+  createChildCategory(obj: any) {
+    return this.http.post(`${this.apiUrl}CreateChildCategory`, obj);
   }
 
-  updateChildCategory(obj: any){
-    return this.http.put(`${this.apiUrl}UpdateChildCategory`,obj);
+  updateChildCategory(obj: any) {
+    return this.http.put(`${this.apiUrl}UpdateChildCategory`, obj);
   }
 
-  deleteChildCategory(id : number){
+  deleteChildCategory(id: number) {
     return this.http.delete(`${this.apiUrl}DeleteChildCategory?id=${id}`);
   }
 
 
-  getAllEmployee(){
+  getAllEmployee() {
     return this.http.get(`${this.apiUrl}GetEmployees`);
   }
 
-CreateEmployee(obj:any){
-return this.http.post(`${this.apiUrl}CreateEmployee`,obj);
-}
+  CreateEmployee(obj: any) {
+    debugger
+    return this.http.post(`${this.apiUrl}CreateEmployee`, obj);
+  }
 
-updateEmployee(obj:any){
-return this.http.put(`${this.apiUrl}UpdateEmployee`,obj);
-}
+  updateEmployee(obj: any) {
+    return this.http.put(`${this.apiUrl}UpdateEmployee`, obj);
+  }
 
-deleteEmployee(id: number){
-  return this.http.delete(`${this.apiUrl}DeleteEmployee?id=${id}`);
-}
+  deleteEmployee(id: number) {
+    return this.http.delete(`${this.apiUrl}DeleteEmployee?id=${id}`);
+  }
 
 
-createTicket(obj: any){
-  debugger
-  return this.http.post(`${this.apiUrl}CreateNewTicket`, obj)
-}
+  createTicket(obj: any) {
+    return this.http.post(`${this.apiUrl}CreateNewTicket`, obj)
+  }
 
+  getTicketsCretedByLoggedEmp(id: number) {
+    return this.http.get(`${this.apiUrl}GetTicketsCreatedByEmpId?empId=${id}`);
+  }
+
+
+  getTicketAssignedToEmp(id: number) {
+    return this.http.get(`${this.apiUrl}GetAssignedTicketsByEmpId?empId=${id}`);
+  }
+
+  getStartTicket(ticketId: number) {
+    return this.http.post(`${this.apiUrl}startTicket?id=${ticketId}`,{});
+  }
+  getCloseTicket(ticketId: number) {
+    return this.http.post(`${this.apiUrl}closeTicket?id=${ticketId}`,{});
+  }
 }
